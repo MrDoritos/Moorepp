@@ -8,10 +8,10 @@ for (int i = 0; i < s.length(); i++)
 buf[i] = pchar[i];
 }
 
-void itoa(int value, std::string &in){
-in = std::to_string(value);
-}
+//void itoa(int value, std::string &in){
+//in = std::to_string(value);
+//}
 
-string* itoa(int value, std::string &in){
+std::string* itoa(int value, std::string &in){
 return &(in = std::to_string(value));
 }
