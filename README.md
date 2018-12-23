@@ -22,11 +22,12 @@ Builds successfully
 |--------------------------------------|-------|---------|---------------------------------------------|
 | lodepng.h                            | X     | -       | PNG Decoder/Encoder (needs .cpp)            |
 | conversions/itoa.h                   | X     | -       | Integer to string and char*                 |
-| console/console.h                    | X     | -       |  Console formatting                         |
+| console/console.h                    | X     | -       | Console formatting                          |
 | console/consoletools.h               | X     | -       | Console stdin tools                         |
 | console/gui.h                        | %     | -       | Console GUI tools                           |
 | socket/tcp/tcplistener.h             | X     | -       | Wrapper class for a TCP listener socket     |
 | socket/tcp/tcpclient.h               | X     | -       | Wrapper class for a TCP client socket       |
 | crypto/crypto.h                      | X     | -       | Single key encryption algorithm             |
-| data/bitarray.h                      | X     | -       |  Array of bits that each represent a number |
+| data/bitarray.h                      | X     | -       | Array of bits that each represent a number  |
+| data/jaggedbitarray.h                | X     | -       | data/bitarray.h but memory conscious        |
 | encoding/base64/base64encodedecode.h | X     | -       | Base64 Encoder/Decoder                      |
