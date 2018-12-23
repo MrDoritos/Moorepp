@@ -1,5 +1,7 @@
 #include <stdlib.h>
+#include <iostream>
 #include "bitarray.h"
+#pragma once
 #define BLOCKSIZE sizeof(size_t) * 8
 
 class jaggedbitarray {
@@ -36,16 +38,19 @@ bitarray allocmap;
 size_t *map;
 int getnext(int last) {
 int cap = allocmap.getcapacity();
-while (!(allocmap.exists(last)) && last <= cap) last++;
-return (last <= cap ? last : -1);
+while ((!(allocmap.exists(++last))) && last < cap) {
+}
+return (last < cap ? last : -1);
 }
 int getindex(int i) {
+//std::cout << "i:" << i << " BLOCKSIZE:" << BLOCKSIZE << std::endl;
 if (i / BLOCKSIZE == 0) return 0;
 int absolute_blk = BLOCKSIZE;
 int index = -1;
 int iter = -1;
 while ((index = getnext(index)) != -1) {
 iter++;
+//std::cout << "index:" << index << " iter:" << iter << std::endl;
 }
 return iter;
 }
@@ -67,6 +72,7 @@ newmap[curnewblk++] = 0ULL; // Allocate the new block with no value
 allocated_blocks++;
 delete map;
 map = newmap;
+allocmap.add(blocknum / BLOCKSIZE);
 } // END ALLOC(int)
 
 };
