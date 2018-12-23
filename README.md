@@ -29,5 +29,7 @@ Builds successfully
 | socket/tcp/tcpclient.h               | X     | -       | Wrapper class for a TCP client socket       |
 | crypto/crypto.h                      | X     | -       | Single key encryption algorithm             |
 | data/bitarray.h                      | X     | -       | Array of bits that each represent a number  |
+| data/intobjectarray.h                | X     | -       | Data storage in id dictionary               |
 | data/jaggedbitarray.h                | X     | -       | data/bitarray.h but memory conscious        |
 | encoding/base64/base64encodedecode.h | X     | -       | Base64 Encoder/Decoder                      |
+
