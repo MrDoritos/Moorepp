@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#pragma once
 
 using namespace std;
 class bitarray {
@@ -26,6 +27,8 @@ inline bool exists(int i) {
 return (i < getcapacity() && (map[i/blocksize] & (1ULL << (i % blocksize))) != 0);
 }
 inline size_t getcapacity() { return allocated_blocks * blocksize; }
+static const int blocksize = sizeof(size_t) * 8;
+
 private:
 void realloc(size_t blocks) {
 if (blocks < allocated_blocks) return; //Make sure we aren't wasting CPU cycles and reallocating memory for no reason
@@ -55,7 +58,6 @@ map = newmap;
 }
 int allocated_blocks;
 size_t *map;
-static const int blocksize = sizeof(size_t) * 8;
 
 };
 
