@@ -1,3 +1,4 @@
+#include <iostream>
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -70,6 +71,9 @@ std::cout << ESC << x + 1 << 'G';
 }
 inline static void setcursory(int y){
 std::cout << ESC << y + 1 << 'H';
+}
+inline static void readline(std::string& str) {
+std::getline(std::cin, str);
 }
 inline static void clear(){
 std::cout << ESC << 1 << 'J';
