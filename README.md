@@ -23,6 +23,7 @@ Builds successfully
 | lodepng.h                            | X     | -       | PNG Decoder/Encoder (needs .cpp)            |
 | conversions/itoa.h                   | X     | -       | Integer to string and char*                 |
 | console/console.h                    | X     | -       |  Console formatting                         |
+| console/consoletools.h               | X     | -       | Console stdin tools                         |
 | console/gui.h                        | %     | -       | Console GUI tools                           |
 | socket/tcp/tcplistener.h             | X     | -       | Wrapper class for a TCP listener socket     |
 | socket/tcp/tcpclient.h               | X     | -       | Wrapper class for a TCP client socket       |
