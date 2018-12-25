@@ -16,6 +16,56 @@ map = new size_t[1];
 map[0] = 0ULL;
 }
 
+//Adds a value
+void add(int i) {
+//See if we have the block allocated
+if (allocmap.exists(BLOCKOF(i))) {
+//Get the relative block the value will go in
+int index = getindex(i);
+map[index] |= (1ULL << (i % BLOCKSIZE));
+} else {
+//We need to allocate that block
+alloc(BLOCKOF(i));
+add(i);
+}
+}
+
+//Removes a value
+void remove(int i);
+
+//See if a value exists
+bool exists(int i) {
+if (allocmap.exists(BLOCKOF(i))) {
+int index = getindex(i);
+return ((map[index] & (1ULL << (i % BLOCKSIZE))) != 0);
+} else {
+return false;
+}
+}
+
+//Allocate a block by its absolute block number
+void alloc(int blocknum) {
+if (allocmap.exists(blocknum)) return; //If the block already exists, return
+size_t *newmap = new size_t[++allocated_blocks]; //We increment alloc... here
+int cur = -1; //The current absolute block on map
+int relblk = 0; //The current relative block on map
+int curnewblk = 0; //The current block on newmap
+allocmap.add(blocknum); // Tell the allocmap that we have a new block allocated
+//We need to know the block that is not allocated, which is blocknum
+while ((cur = getnextalloc(cur)) != -1) {
+if (cur != blocknum) {
+//Copy the old block
+newmap[curnewblk++] = map[relblk++];
+} else {
+//Allocate the new block
+newmap[curnewblk++] = 0ULL;
+}
+}
+delete map; // Free the old map
+map = newmap; // Copy the address
+
+}
+
 //Using a value, getindex will determine the block
 //	that the value is in
 //Returns -1 if the block does not exist
