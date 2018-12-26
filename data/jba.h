@@ -31,7 +31,12 @@ add(i);
 }
 
 //Removes a value
-void remove(int i);
+void remove(int i) {
+if (allocmap.exists(BLOCKOF(i))) {
+int index = getindex(i);
+map[index] &= ~(1ULL << (i % BLOCKSIZE));
+}
+}
 
 //See if a value exists
 bool exists(int i) {
@@ -100,7 +105,14 @@ return (allocmap.exists(last + 1) ? last + 1 : (allocmap.getcapacity() < (last +
 //Returns -1 if there are no values left
 int getnext(int last) {
 //if (allocmap.exists(last / BLOCKSIZE)) { // Checks if the block is even allocated
-
+//If we get a negative value, that means we are fucked in some cercumstances
+if (last == -1) {
+if (exists(0)) {
+return 0;
+} else {
+return getnext(0);
+}
+}
 //int block = last / BLOCKSIZE; // The block 'last' is in
 int value = last;
 int currentblock = BLOCKOF(value);
