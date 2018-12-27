@@ -15,6 +15,15 @@ allocated_blocks = 1;
 map = new size_t[1];
 map[0] = 0ULL;
 }
+//Counting
+int count() {
+int cnt = 0;
+for (int i = -1; i != -1; i = getnext(i)) {
+cnt++;
+}
+return cnt;
+}
+
 
 //Adds a value
 void add(int i) {
