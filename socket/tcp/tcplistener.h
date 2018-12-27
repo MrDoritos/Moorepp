@@ -1,3 +1,12 @@
+#ifdef __WIN32
+
+#include <ws2tcpip.h>
+#include <string>
+#pragma comment(lib, "ws2_32.lib")
+#define MAX_BUFFER_SIZE (49152)
+
+#elif __linux__
+
 #include <stdio.h>
 #include <iostream>
 #include <stdlib.h>
@@ -7,55 +16,16 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include "tcpclient.h"
+
+#endif
+
 #pragma once
+
 class tcplistener {
 public:
-tcplistener(/*unsigned short port*/) {
-/*port = (port == 0 ? 80 : port);*/
+tcplistener() {
 declared = false;
 serv_addr = new sockaddr_in();
-/*
-//OPEN SOCKET
-sockfd = socket(AF_INET, SOCK_STREAM, 0);
-if (sockfd < 0)
-	error("ERROR opening socket");
-//ZERO
-bzero((char*)&serv_addr, sizeof(serv_addr));
-//DEFINE PORT
-portno = port;
-//DEFINE IP + PORT
-serv_addr.sin_family = AF_INET;
-serv_addr.sin_addr.s_addr = INADDR_ANY;
-serv_addr.sin_port = htons(port);
-//BIND SOCKET
-if (bind(sockfd, (struct sockaddr*) &serv_addr,
-	sizeof(serv_addr)) < 0)
-	error("ERROR on binding");
-//LISTEN
-listen(sockfd,5);
-clilen = sizeof(cli_addr);
-//ACCEPT A SOCKET
-//newsockfd = accept(sockfd,
-//	(struct sockaddr*) &cli_addr,
-//	&clilen);
-//if (newsockfd < 0)
-//	error("ERROR on accept");
-//ZERO
-//bzero(buffer,256);
-
-//READING FROM SOCKET
-//n = read(newsockfd,buffer,255);
-//if (n < 0) error("ERROR reading from socket");
-//printf("Here is the message: %s\n",buffer);
-
-//WRITING TO SOCKET
-//n = write(newsockfd, "I got your message", 18);
-//if (n < 0) error("ERROR writing to socket");
-
-//CLOSING THE SOCKET
-//close(newsockfd);
-//close(sockfd);
-*/
 }
 int sockbind(sockaddr_in* serveraddress)
 {
