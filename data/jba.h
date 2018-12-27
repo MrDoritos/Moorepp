@@ -18,7 +18,7 @@ map[0] = 0ULL;
 //Counting
 int count() {
 int cnt = 0;
-for (int i = -1; i != -1; i = getnext(i)) {
+for (int i = getnext(-1); i != -1; i = getnext(i)) {
 cnt++;
 }
 return cnt;
