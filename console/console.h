@@ -42,12 +42,16 @@
 #define SETWHITEFG      "\x1B[37m"
 
 #define BLACK_BG        40
+#define SETBLACKBG	"\x1B[40m"
 #define RED_BG          41
+#define SETREDBG	"\x1B[41m"
 #define GREEN_BG        42
+#define SETGREENBG	"\x1B[42m"
 #define YELLOW_BG       43
 #define BLUE_BG         44
 #define MAGENTA_BG      45
 #define CYAN_BG         46
+#define	SETCYANBG	"\x1B[46m"
 #define WHITE_BG        47
 #define CONSOLEWIDTH console::getconsolewidth()
 #define CONSOLEHEIGHT console::getconsoleheight()
@@ -80,5 +84,8 @@ std::cout << ESC << 1 << 'J';
 }
 inline static int getconsolewidth() { return int(w.ws_col); }
 inline static int getconsoleheight() { return int(w.ws_row); }
+static void bindioctl() {
+ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+}
 private:
 };
