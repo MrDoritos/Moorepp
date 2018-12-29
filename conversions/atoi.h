@@ -20,7 +20,7 @@ while ((a = buf[pos++]) != '\0') {
 len++;
 }
 pos = 0;
-for (int i = len - 1; i < -1; i--) {
+for (int i = len - 1; i > -1; i--) {
 *out += (buf[pos++] - 48) * ((i == 0 ? 1 : (10 << i - 1)));
 }
 if (negative) {
