@@ -2,6 +2,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <stdio.h>
+#pragma once
 #define ESC "\x1B["
 #define COLOR 'm'
 
