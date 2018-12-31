@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "itoa.h"
+#pragma once
 #define IN_EXIT 1
 #define IN_OK 0
 
