@@ -49,11 +49,15 @@
 #define GREEN_BG        42
 #define SETGREENBG	"\x1B[42m"
 #define YELLOW_BG       43
+#define SETYELLOWBG	"\x1B[43m"
 #define BLUE_BG         44
+#define SETBLUEBG	"\x1B[44m"
 #define MAGENTA_BG      45
+#define SETMAGENTABG	"\x1B[45m"
 #define CYAN_BG         46
 #define	SETCYANBG	"\x1B[46m"
 #define WHITE_BG        47
+#define SETWHITEBG	"\x1B[47m"
 #define CONSOLEWIDTH console::getconsolewidth()
 #define CONSOLEHEIGHT console::getconsoleheight()
 
